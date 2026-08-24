@@ -1,0 +1,22 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  tagline?: string;
+}
+const { num, title, tagline = 'Class of 2027' } = Astro.props;
+---
+<div class="title-block">
+  <div class="tb-sheet">
+    <span>Sheet</span>
+    <strong>{num}</strong>
+  </div>
+  <div class="tb-title">
+    <span>Drawn by Ari Lee</span>
+    <strong>{title}</strong>
+  </div>
+  <div class="tb-scale">
+    <span>Scale</span>
+    <strong>{tagline}</strong>
+  </div>
+</div>

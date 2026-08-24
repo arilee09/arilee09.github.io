@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArcMotif from '../components/ArcMotif.astro';
+import { withBase } from '../lib/url.js';
+---
+<Layout title="Process & Research" description="The research thread behind the thesis: sand, elevators, and a dorm window." slug="process" sheetNum="A3.00">
+  <section class="section section--tight">
+    <span class="eyebrow">A3.00 — Process &amp; Research</span>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Three Studies</h1>
+    <p class="lede">
+      Sheet A1.00 tells this as a story. Here it is as research: what I measured, how, and what
+      changed each time the scale grew — from an object, to a building, to a room I live in.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="moment">
+      <div class="moment__media">
+        <div class="frame placeholder">SCALE 01 — OBJECT</div>
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">Study 01 — Nov–Dec 2025</span>
+        <h3 class="moment__title">Relationship Between Shoe Size and the Volume of Sand Entering the Shoe</h3>
+        <p>
+          An independently designed research framework, starting from a personal observation and
+          ending in a derived mathematical formula quantifying sand and gravel accumulation
+          against shoe size.
+        </p>
+        <div class="case-study__tags">
+          <span class="tag">Variables: shoe structure</span>
+          <span class="tag">particle size</span>
+          <span class="tag">friction</span>
+          <span class="tag">gait pattern</span>
+        </div>
+        <p style="margin-top:0.8rem;">
+          Now continuing as two live threads: a collaboration with Dr. Hemant Kumar Singh
+          (Department of Mathematics, University of Delhi) on the elevator-circulation extension
+          of this model, and a window/light research project this summer at Princeton.
+        </p>
+        <p class="caption">Certificate of Recognition — International Youth Research Paper Competition, 2026</p>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment__media">
+        <div class="frame placeholder">SCALE 02 — BUILDING</div>
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">Study 02 — Elevator Circulation</span>
+        <h3 class="moment__title">From wait time to shared discomfort</h3>
+        <p>
+          The same variable-based thinking applied to a dorm elevator: floor count, wait time,
+          time-of-day traffic, and how many people board at once. The target metric changed from
+          minimizing a number to minimizing a resident's impatience.
+        </p>
+        <div class="case-study__tags">
+          <span class="tag">Variables: floor count</span>
+          <span class="tag">wait time</span>
+          <span class="tag">traffic pattern</span>
+          <span class="tag">occupancy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment__media">
+        <div class="frame placeholder">SCALE 03 — ROOM</div>
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">Study 03 — Light, Space &amp; Learning Environment</span>
+        <h3 class="moment__title">A window, logged</h3>
+        <p>
+          A running observation log of my Exeter dorm window: size, angle of light, illuminance
+          by time of day, shadow length across the desk. Recorded first as numbers; read, later,
+          as a question about how light changes attention and mood.
+        </p>
+        <div class="case-study__tags">
+          <span class="tag">Variables: window size</span>
+          <span class="tag">light angle</span>
+          <span class="tag">illuminance</span>
+          <span class="tag">shadow length</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="arc-divider"><ArcMotif size={48} /></div>
+
+  <section class="section section--tight">
+    <p class="lede">
+      Object, building, living environment — the same method, widening each time to include more
+      of what a formula alone can't capture. Read where this leads on <a href={withBase('about')}>Sheet A1.00
+      — Thesis</a>, or where it's already landed on <a href={withBase('design-work')}>Sheet A2.00 — Design
+      Work</a>.
+    </p>
+  </section>
+</Layout>

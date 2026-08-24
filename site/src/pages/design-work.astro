@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import ArcMotif from '../components/ArcMotif.astro';
+---
+<Layout title="Design Work" description="Architecture and design projects — AIA New Hampshire, Scholastic Art & Writing, Cornell Summer Architecture." slug="design-work" sheetNum="A2.00">
+  <section class="section section--tight">
+    <span class="eyebrow">A2.00 — Design Work</span>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">The Studio</h1>
+    <p class="lede">
+      Three design projects, each pushing a little further from the drafting table into how
+      people actually move through and feel a space.
+    </p>
+  </section>
+
+  <section class="section">
+    <CaseStudy
+      num="01 — AIA New Hampshire, 1st Place"
+      title="Arc Resonance Center"
+      tags={["Community Architecture", "AIA New Hampshire", "1st Place · $650"]}
+      images={[
+        { src: 'images/aia/aia-03.jpg', alt: 'Ari Lee with the student design team in front of the Arc Resonance Center presentation boards at the AIA New Hampshire competition' },
+        { src: 'images/aia/aia-02.jpg', alt: 'Close-up of the Arc Resonance Center presentation boards, showing the site plan, floor plans, and elevations' },
+        { src: 'images/aia/aia-05.jpg', alt: 'Close-up of the Arc Resonance Center axonometric renderings and material palette' },
+        { src: 'images/aia/aia-01.jpg', alt: 'Ari Lee holding the AIA New Hampshire 1st place certificate for Arc Resonance Center, with Heather Taylor of AIA NH' },
+        { src: 'images/aia/aia-06.jpg', alt: 'Ari Lee at the awards ceremony holding the "Project of Distinction" certificate for Arc Resonance Center' },
+        { src: 'images/aia/aia-04.jpg', alt: 'The AIA New Hampshire awards reception, with the Arc Resonance Center boards on display behind the audience' },
+      ]}
+    >
+      <p>
+        Arc Resonance Center is a community music building that reads as two semicircles
+        radiating outward like sound waves, housing a performance hall and classrooms. The form
+        is the argument: a building about music should look like it's making sound, not just
+        containing it.
+      </p>
+      <p>
+        Won 1st place in the statewide AIA New Hampshire High School Design Challenge.
+      </p>
+    </CaseStudy>
+
+    <CaseStudy
+      num="02 — Scholastic Art & Writing Awards, Silver Key"
+      title="A Playground for Ithaca State Park"
+      tags={["Landscape / Play", "Scholastic Art & Writing", "Silver Key"]}
+      placeholderNote="Renderings to be added"
+    >
+      <p>
+        Designed around the concept of attraction and color: bold hues used deliberately to guide
+        movement and draw people through the site, rather than as decoration applied after the
+        plan was finished.
+      </p>
+      <p>
+        Recognized with a Silver Key in the national Scholastic Art &amp; Writing Awards.
+      </p>
+    </CaseStudy>
+
+    <CaseStudy
+      num="03 — Cornell University Summer Architecture Program"
+      title="Studio Semester at Cornell"
+      tags={["Rhino 3D", "Technical Drawing", "Model Making", "6 Weeks · 60 hrs/week"]}
+      images={[
+        { src: 'images/cornell-summer/cornell-summer-01.jpg', alt: 'Ari Lee and program cohort holding sketchbooks in front of Cornell\'s McGraw Tower and Uris Library' },
+        { src: 'images/cornell-summer/cornell-summer-06.jpg', alt: 'Precedent research wall on Luis Barragán\'s Casa Gilardi, with a "Levitating / Framed / Attracting" diagram and a folded-paper study' },
+        { src: 'images/cornell-summer/cornell-summer-07.jpg', alt: 'Detailed pencil study of radiating structural lines converging at two points' },
+        { src: 'images/cornell-summer/cornell-summer-08.jpg', alt: 'An early radiating stick-and-block structural study model' },
+        { src: 'images/cornell-summer/cornell-summer-10.jpg', alt: 'A woven wood-stick lattice cube, a structural material study' },
+        { src: 'images/cornell-summer/cornell-summer-09.jpg', alt: 'An abstract black paper-cut model exploring a bridge-like structure between two towers' },
+        { src: 'images/cornell-summer/cornell-summer-04.jpg', alt: 'Desk setup with a laptop open to a rendering, a sketchbook of light and shadow studies, and drafting tools' },
+        { src: 'images/cornell-summer/cornell-summer-05.jpg', alt: 'An in-progress cardboard model on a desk, with the "A Building in Stewart Park" project brief pinned behind it' },
+        { src: 'images/cornell-summer/cornell-summer-11.jpg', alt: 'The final studio model: a wood and cardboard pavilion with a mast, ladder ramp, and stepping stones' },
+        { src: 'images/cornell-summer/cornell-summer-12.jpg', alt: 'The final model photographed on-site, overlooking a real gorge and waterfall' },
+        { src: 'images/cornell-summer/cornell-summer-13.jpg', alt: 'Detail of the final model with a live ivy vine woven through the mast structure' },
+        { src: 'images/cornell-summer/cornell-summer-14.jpg', alt: 'Detail of the final model\'s skate ramp and picnic area, with a miniature skateboard and picnic props' },
+        { src: 'images/cornell-summer/cornell-summer-02.jpg', alt: 'Overhead view of the studio crit space, walls lined with drawings and tables covered in architectural models' },
+        { src: 'images/cornell-summer/cornell-summer-03.jpg', alt: 'Ari Lee with three program friends in front of a wall of studio renderings' },
+      ]}
+    >
+      <p>
+        An intensive six-week program covering Rhino 3D modeling, Adobe Illustrator, Photoshop,
+        Lightroom, architectural photography, and technical drawing — producing a full studio
+        portfolio of renderings, physical models, technical drawings, and site plans.
+      </p>
+      <p>
+        Research component focused on Luis Barragán's Casa Gilardi and Louis Kahn's Class of 1945
+        Library — a building I'd photograph again later, for an entirely different project (see
+        Sheet A4.00).
+      </p>
+    </CaseStudy>
+  </section>
+
+  <div class="arc-divider"><ArcMotif size={48} /></div>
+
+  <section class="section section--tight">
+    <span class="eyebrow">Also on the boards</span>
+    <ul class="awards-list" style="margin-top:0.8rem;">
+      <li>
+        <div><span class="award-title">Young Architecture and Design Contest</span><span class="award-detail">National competition — submitted September 2026</span></div>
+        <span class="award-year">2026</span>
+      </li>
+      <li>
+        <div><span class="award-title">Architecture Foundation of San Francisco</span><span class="award-detail">3rd place</span></div>
+        <span class="award-year">2026</span>
+      </li>
+    </ul>
+  </section>
+</Layout>

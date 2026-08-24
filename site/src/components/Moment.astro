@@ -1,0 +1,35 @@
+---
+import { withBase } from '../lib/url.js';
+
+interface ImgSpec { src: string; alt: string; }
+interface Props {
+  num: string;
+  title: string;
+  meta?: string;
+  images?: ImgSpec[];
+}
+const { num, title, meta, images = [] } = Astro.props;
+const isSingle = images.length === 1;
+---
+<article class="moment">
+  <div class="moment__media">
+    {isSingle ? (
+      <div class="feature-frame feature-frame--sm">
+        <img src={withBase(images[0].src)} alt={images[0].alt} loading="lazy" />
+      </div>
+    ) : (
+      <div class="grid-2">
+        {images.map((img) => (
+          <div class="frame">
+            <img src={withBase(img.src)} alt={img.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+  <div class="moment__body">
+    <span class="moment__num">{num}{meta ? ` — ${meta}` : ''}</span>
+    <h3 class="moment__title">{title}</h3>
+    <slot />
+  </div>
+</article>

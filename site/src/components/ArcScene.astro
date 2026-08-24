@@ -1,0 +1,83 @@
+---
+---
+<canvas class="hero__canvas" id="arc-scene" aria-hidden="true"></canvas>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('arc-scene') as HTMLCanvasElement | null;
+  const container = canvas?.parentElement;
+  if (!canvas || !container) throw new Error('arc scene canvas missing');
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let renderer: THREE.WebGLRenderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  } catch {
+    canvas.style.display = 'none';
+    throw new Error('WebGL unavailable');
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 9);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const radii = [1.1, 1.9, 2.7, 3.5, 4.3];
+  const blue = new THREE.Color(0x6b84ff);
+  const white = new THREE.Color(0xffffff);
+
+  radii.forEach((r, i) => {
+    const geo = new THREE.TorusGeometry(r, 0.006, 8, 96, Math.PI);
+    const mat = new THREE.MeshBasicMaterial({
+      color: i % 2 === 0 ? blue : white,
+      transparent: true,
+      opacity: 0.55 - i * 0.06,
+      wireframe: true,
+    });
+    const ring = new THREE.Mesh(geo, mat);
+    ring.rotation.x = Math.PI / 2 + (i * 0.05);
+    ring.rotation.z = -Math.PI / 2;
+    group.add(ring);
+  });
+
+  group.rotation.set(-0.15, 0.5, 0);
+
+  function resize() {
+    const { clientWidth, clientHeight } = container as HTMLElement;
+    renderer.setSize(clientWidth, clientHeight, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+    camera.aspect = clientWidth / Math.max(clientHeight, 1);
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let targetX = 0;
+  let targetY = 0;
+  window.addEventListener('pointermove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 0.6;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+  });
+
+  function renderStatic() {
+    renderer.render(scene, camera);
+  }
+
+  if (reduceMotion) {
+    renderStatic();
+  } else {
+    const clock = new THREE.Clock();
+    const tick = () => {
+      const t = clock.getElapsedTime();
+      group.rotation.y = 0.5 + t * 0.08 + targetX;
+      group.rotation.x = -0.15 + targetY * 0.5;
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    };
+    tick();
+  }
+</script>

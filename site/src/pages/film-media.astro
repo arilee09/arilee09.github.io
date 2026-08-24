@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import ArcMotif from '../components/ArcMotif.astro';
+import Slideshow from '../components/Slideshow.astro';
+import { withBase } from '../lib/url.js';
+---
+<Layout title="Film & Media" description="Set-design internship, newsroom shadowing, photography, and songwriting." slug="film-media" sheetNum="A4.00">
+  <section class="section section--tight">
+    <span class="eyebrow">A4.00 — Film &amp; Media</span>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Building Sets, Reading Light</h1>
+    <p class="lede">
+      Everything here is still spatial thinking, just aimed at a screen instead of a site: how a
+      room is built to be looked at, and how a frame decides what a viewer feels.
+    </p>
+  </section>
+
+  <section class="section">
+    <CaseStudy
+      num="01 — The Studio M, Seoul"
+      title="Film Set-Design Intern"
+      tags={["K-Drama Production", "Doctor John", "Boyhood", "4 Weeks · 25 hrs/week"]}
+      images={[
+        { src: 'images/film-set-design/film-set-design-02.jpg', alt: 'Ari Lee walking through a warehouse of unfinished wooden house set frames for a K-drama production' },
+        { src: 'images/film-set-design/film-set-design-01.jpg', alt: 'Ari Lee beside color-coded set floor plans and material legends pinned to a production board' },
+        { src: 'images/film-set-design/film-set-design-04.jpg', alt: 'Ari Lee reviewing set floor plans pinned to a wood-framed set wall' },
+        { src: 'images/film-set-design/film-set-design-03.jpg', alt: 'Isometric floor plan renderings for a restaurant set, pinned to a production board' },
+        { src: 'images/film-set-design/film-set-design-05.jpg', alt: 'Ari Lee checking a floor plan against an under-construction restaurant set' },
+        { src: 'images/film-set-design/film-set-design-07.jpg', alt: 'A storage room of paint buckets and materials staged for set construction' },
+        { src: 'images/film-set-design/film-set-design-06.jpg', alt: 'A night scene set at a Korean convenience store storefront, dressed for filming' },
+      ]}
+    >
+      <p>
+        Assisted the set design team on the K-drama productions <em>Doctor John</em> and
+        <em>Boyhood</em> — interpreting production blueprints to curate furniture, props, and set
+        elements, and sitting in on daily pre-production meetings to align on the director's
+        vision and the shooting timeline.
+      </p>
+      <p>
+        <em>Boyhood</em> is also the show that ended up using an original song of mine as its
+        theme track — see Song Production, below.
+      </p>
+    </CaseStudy>
+
+    <CaseStudy
+      num="02 — Seoul Broadcasting Systems"
+      title="News Anchor Shadowing, Producing Assistant"
+      tags={["Live Broadcast", "Newsroom", "4 Weeks · 15 hrs/week"]}
+      images={[
+        { src: 'images/sbs-news/sbs-news-01.jpg', alt: 'Ari Lee on the SBS newsroom set with a camera crane overhead and cityscape backdrops' },
+        { src: 'images/sbs-news/sbs-news-02.jpg', alt: 'Ari Lee in front of the SBS News Headquarters sign' },
+        { src: 'images/sbs-news/sbs-news-03.jpg', alt: 'Ari Lee seated at the curved SBS anchor desk with a Seoul skyline backdrop' },
+        { src: 'images/sbs-news/sbs-news-06.jpg', alt: 'An anchor being fitted with a microphone in front of the SBS News logo wall' },
+        { src: 'images/sbs-news/sbs-news-09.jpg', alt: 'Ari Lee wearing a production headset on the studio floor, green screen visible behind her' },
+        { src: 'images/sbs-news/sbs-news-05.jpg', alt: 'Ari Lee on the green-screen weather set, composited live into a weather forecast graphic' },
+        { src: 'images/sbs-news/sbs-news-16.jpg', alt: 'The SBS Paris 2024 Olympics broadcast desk set, camera in foreground' },
+        { src: 'images/sbs-news/sbs-news-17.jpg', alt: 'Ari Lee with an SBS anchor in front of the Paris 2024 Olympics broadcast wall' },
+        { src: 'images/sbs-news/sbs-news-21.jpg', alt: 'Ari Lee in front of a colorful geometric SBS Paris 2024 backdrop' },
+      ]}
+    >
+      <p>
+        Shadowed anchor Eunkyoung Park through a full live broadcast day — the newsroom, the
+        studio floor, and the control room — then helped run the 3PM broadcast itself. Tried the
+        weather-forecast green screen, toured a set under construction, and assisted with music
+        curation and script prep for radio.
+      </p>
+    </CaseStudy>
+  </section>
+
+  <div class="arc-divider"><ArcMotif size={48} /></div>
+
+  <section class="section">
+    <div class="moment">
+      <div class="moment__media">
+        <Slideshow
+          id="boys-generation"
+          images={[
+            { src: 'images/film/film-01.jpg', alt: 'Ari Lee on set in a school uniform behind camera monitors, filming 소년시대' },
+            { src: 'images/film/film-03.jpg', alt: 'Ari Lee with three young cast members in school uniform on a night street set' },
+            { src: 'images/film/film-04.jpg', alt: 'Ari Lee in costume backstage with a fellow young actor' },
+            { src: 'images/film/film-05.jpg', alt: 'Ari Lee in costume in the wardrobe trailer' },
+            { src: 'images/film/film-02.jpg', alt: 'A camera crane operator filming a night scene on the 소년시대 set' },
+          ]}
+        />
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">03 — On-Screen</span>
+        <h3 class="moment__title">소년시대 (Boys' Generation)</h3>
+        <p>Played a middle school girl in the film 소년시대 — a summer on the other side of the set from the drafting table.</p>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment__media">
+        <Slideshow
+          id="differentiable"
+          ratio="contain"
+          images={[
+            { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details — iron railings, stairs, and moldings mounted as overlapping blocks' },
+            { src: 'images/photography/photography-01.jpg', alt: 'A second cluster of the black and white photographic assemblage, including a library interior and a carved capital' },
+            { src: 'images/photography/photography-04.jpg', alt: 'The full exhibition board for Differentiable, with the Class of 1945 Library facade, a "Order is not enough — Louis Kahn" quote card, and detail studies' },
+            { src: 'images/photography/photography-05.jpg', alt: 'Ari Lee beside the Differentiable exhibition board' },
+          ]}
+        />
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">04 — Scholastic Art &amp; Writing, Bronze Key</span>
+        <h3 class="moment__title">Differentiable (2026)</h3>
+        <p>
+          A series photographing architectural details and studio objects — from the concrete
+          cross on the atrium of Louis Kahn's Class of 1945 Library to a small glass prism —
+          layered and overlapped so one image bleeds into the next.
+        </p>
+        <p style="font-family:var(--font-display); font-style:italic; color:var(--cyanotype); font-size:1.05rem; border-left:3px solid var(--blueprint); padding-left:1rem;">
+          "I liked the idea that photographs could start to feel connected just through how they
+          were placed next to each other, just like how architecture and ordinary objects can look
+          like they belong perfectly together."
+        </p>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment__media">
+        <div class="feature-frame placeholder">500K+ VIEWS · YOUTUBE</div>
+      </div>
+      <div class="moment__body">
+        <span class="moment__num">05 — Song Production</span>
+        <h3 class="moment__title">Lyricist &amp; Producer</h3>
+        <p>
+          Writing and producing original songs about the emotional landscape of adolescence since
+          2023, with accompanying music videos that have surpassed 500,000 views on YouTube. One
+          original composition became the main theme track for the television series
+          <em>Boyhood</em>; another was featured in an official McDonald's advertising campaign.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

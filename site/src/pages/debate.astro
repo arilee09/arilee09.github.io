@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import ArcMotif from '../components/ArcMotif.astro';
+---
+<Layout title="Debate & Leadership" description="Public Forum debate at Stanford and Harvard, Political Union, and student government." slug="debate" sheetNum="A6.00">
+  <section class="section section--tight">
+    <span class="eyebrow">A6.00 — Debate &amp; Leadership</span>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Arguing the Case</h1>
+    <p class="lede">
+      Design and debate ask the same first question: what is this actually for? Public Forum
+      just makes you answer it out loud, on the clock, against someone arguing the opposite.
+    </p>
+  </section>
+
+  <section class="section">
+    <CaseStudy
+      num="01 — Stanford Individual Public Forum Debate"
+      title="38th Annual Stanford Invitational"
+      tags={["Public Forum", "Double Octafinalist", "2024"]}
+      images={[
+        { src: 'images/stanford-debate/stanford-debate-01.jpg', alt: 'Ari Lee and a teammate holding trophies inside Stanford Memorial Hall after the debate tournament' },
+        { src: 'images/stanford-debate/stanford-debate-02.jpg', alt: 'Trophy plaque reading "38th Annual Stanford Invitational, Novice Public Forum Debate, Double Octafinalist - 2024"' },
+      ]}
+    >
+      <p>
+        Trophy delivered from the 38th Annual Stanford Individual Public Forum Debate tournament —
+        a Double Octafinalist finish in Novice Public Forum.
+      </p>
+    </CaseStudy>
+
+    <CaseStudy
+      num="02 — Harvard University"
+      title="Harvard Debate Council Summer Workshop"
+      tags={["Public Forum Methodology", "2 Weeks · 60 hrs/week"]}
+      images={[
+        { src: 'images/harvard-summer/harvard-summer-01.jpg', alt: "Certificate from Harvard Debate Council Summer Workshops for Ari Lee's completion of the Public Forum Debate program with high honor" },
+      ]}
+    >
+      <p>
+        Two weeks living on campus, studying rhetoric, argument construction, and evidence-based
+        research strategy — then competing in a workshop-wide tournament on U.S. border
+        surveillance policy. My first offline debate camp, and the skills that carried straight
+        into my season at Exeter: collapsing, extending, summary speeches, and weighing.
+      </p>
+    </CaseStudy>
+
+    <CaseStudy
+      num="03 — Georgetown University"
+      title="Law: How to Think Like an Attorney"
+      tags={["Trial Procedure", "Criminal Law", "Online Summer Program"]}
+      images={[
+        { src: 'images/georgetown-summer/georgetown-summer-01.jpg', alt: "Georgetown University School of Continuing Studies certificate for Ari Lee's completion of Law: How to Think Like an Attorney" },
+      ]}
+    >
+      <p>
+        A two-week course on how lawyers and judges actually work. The capstone: acting as a
+        Supreme Court judge for the District of New Columbia, weighing evidence in a mock case —
+        alongside a parallel unit building a full advertising campaign for Doritos.
+      </p>
+    </CaseStudy>
+  </section>
+
+  <div class="arc-divider"><ArcMotif size={48} /></div>
+
+  <section class="section section--tight">
+    <span class="eyebrow">At Exeter</span>
+    <ul class="awards-list" style="margin-top:0.8rem;">
+      <li>
+        <div><span class="award-title">Political Union</span><span class="award-detail">Weekly debates on U.S. elections and domestic policy; manages @exeter.political.union</span></div>
+        <span class="award-year">2024–2025</span>
+      </li>
+      <li>
+        <div><span class="award-title">Student Council — Class Representative</span><span class="award-detail">Organized class-wide events; managed @phillipsexeter2027 and a class merchandise initiative</span></div>
+        <span class="award-year">2023–2024</span>
+      </li>
+    </ul>
+  </section>
+</Layout>

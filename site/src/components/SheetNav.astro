@@ -1,0 +1,42 @@
+---
+import { sheets } from '../data/sheets.js';
+import { withBase } from '../lib/url.js';
+
+function normalize(p) {
+  return p.replace(/\/+$/, '') || '/';
+}
+const current = normalize(Astro.url.pathname);
+---
+<nav class="sheet-nav" id="sheet-nav" aria-label="Drawing set index">
+  <button class="sheet-nav__toggle" id="sheet-nav-toggle" aria-expanded="false" aria-controls="sheet-nav-list">
+    <span>Sheet Index</span>
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <div class="sheet-nav__brand">Ari Lee</div>
+  <span class="sheet-nav__role">Architecture &amp; Art Portfolio</span>
+
+  <ul class="sheet-nav__list" id="sheet-nav-list">
+    {sheets.map((s) => {
+      const href = withBase(s.slug);
+      const active = normalize(href) === current;
+      return (
+        <li class="sheet-nav__item">
+          <a href={href} class={active ? 'active' : ''} aria-current={active ? 'page' : undefined}>
+            <span class="sheet-nav__num">{s.num}</span>
+            <span>{s.nav}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById('sheet-nav-toggle');
+  const nav = document.getElementById('sheet-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+  });
+</script>

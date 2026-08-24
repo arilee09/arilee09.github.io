@@ -1,0 +1,29 @@
+---
+interface Props {
+  size?: number;
+  plot?: boolean;
+  class?: string;
+}
+const { size = 64, plot = false, class: className = '' } = Astro.props;
+---
+<svg
+  class={`arc-motif ${plot ? 'plot' : ''} ${className}`}
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  fill="none"
+  role="presentation"
+  aria-hidden="true"
+>
+  <path d="M30,45 A15,15 0 0 1 30,75" />
+  <path d="M30,30 A30,30 0 0 1 30,90" />
+  <path d="M30,15 A45,45 0 0 1 30,105" />
+  <path d="M30,0 A60,60 0 0 1 30,120" />
+</svg>
+
+<style>
+  .arc-motif.plot path:nth-child(1) { animation-delay: 0.1s; }
+  .arc-motif.plot path:nth-child(2) { animation-delay: 0.28s; }
+  .arc-motif.plot path:nth-child(3) { animation-delay: 0.46s; }
+  .arc-motif.plot path:nth-child(4) { animation-delay: 0.64s; }
+</style>

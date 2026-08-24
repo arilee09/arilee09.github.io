@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArcMotif from '../components/ArcMotif.astro';
+import ArcScene from '../components/ArcScene.astro';
+import { sheets } from '../data/sheets.js';
+import { withBase } from '../lib/url.js';
+
+const rest = sheets.slice(1);
+const thumbs = {
+  'design-work': { src: 'images/aia/aia-03.jpg', alt: 'The Arc Resonance Center presentation boards at the AIA New Hampshire competition' },
+  'film-media': { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details' },
+  'music': { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-02.jpg', alt: 'Flute, oboe, and harpsichord trio performing on stage' },
+  'debate': { src: 'images/stanford-debate/stanford-debate-01.jpg', alt: 'Ari Lee holding trophies at the Stanford debate invitational' },
+  'service-awards': { src: 'images/hair-donation/hair-donation-02.jpg', alt: 'Braided hair donations bundled for Wigs for Kids' },
+};
+const descriptions = {
+  'about': 'The sand, the elevator, the window — how a math brain learned to design for human happiness.',
+  'design-work': 'AIA New Hampshire 1st place, a Scholastic Silver Key, and a Cornell studio semester.',
+  'process': 'The research thread underneath the design work, from a shoe full of sand to a dorm window.',
+  'film-media': 'Set-design for K-dramas, a morning at SBS News, and a Scholastic Bronze Key in photography.',
+  'music': 'Second flute in the Exeter Symphony, chamber recitals, and a nursing-home concert.',
+  'debate': 'Public Forum debate at Stanford and Harvard, Political Union, and student government.',
+  'service-awards': 'Three years of hair donation and the full record of competitions and honors.',
+  'contact': 'Get in touch, or download the resume.',
+};
+---
+<Layout title="Cover" slug="" sheetNum="A0.00">
+  <section class="hero">
+    <ArcScene />
+    <div class="hero__content">
+      <span class="eyebrow" style="color:var(--sky)">Ari Lee — Architecture &amp; Art Portfolio</span>
+      <h1 class="hero__thesis split-title">Geometry of<br /><em>Happiness</em></h1>
+      <p class="hero__sub reveal">
+        "Happiness is not something to optimize. It's something spaces quietly make possible." —
+        a student at Phillips Exeter Academy applying to study architecture and art. This site is
+        a drawing set: nine numbered sheets tracing the work, the thinking behind it, and the rest
+        of what I spend my hours on.
+      </p>
+      <div class="highlight-strip reveal">
+        <span>AIA NEW HAMPSHIRE — 1ST PLACE</span>
+        <span>SCHOLASTIC ART &amp; WRITING — SILVER + BRONZE KEY</span>
+        <span>PHILLIPS EXETER ACADEMY — CLASS OF 2027</span>
+      </div>
+    </div>
+    <span class="scroll-cue">Scroll</span>
+  </section>
+
+  <section class="section">
+    <div class="section-head reveal">
+      <span class="eyebrow">Sheet Index</span>
+      <h2>What's on this set</h2>
+    </div>
+    <div class="index-grid reveal-group">
+      {rest.map((s) => (
+        <a class="index-card" href={withBase(s.slug)}>
+          {thumbs[s.slug] ? (
+            <div class="index-card__thumb">
+              <img src={withBase(thumbs[s.slug].src)} alt={thumbs[s.slug].alt} loading="lazy" />
+            </div>
+          ) : (
+            <div class="index-card__thumb no-img"><ArcMotif size={40} /></div>
+          )}
+          <div class="index-card__body">
+            <span class="index-card__num">{s.num}</span>
+            <h3 class="index-card__title">{s.title}</h3>
+            <p class="index-card__desc">{descriptions[s.slug]}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,12 @@
+# Source material not meant for the public repo (personal docs, raw photo originals)
+documents/
+photos/
+
+# Astro build artifacts / dependencies (built fresh by CI, not committed)
+site/node_modules/
+site/dist/
+site/.astro/
+
+# OS
+.DS_Store
+**/.DS_Store

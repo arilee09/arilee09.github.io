@@ -1,0 +1,45 @@
+---
+import { withBase } from '../lib/url.js';
+import FrameMarks from './FrameMarks.astro';
+import Slideshow from './Slideshow.astro';
+
+interface ImgSpec { src: string; alt: string; }
+interface Props {
+  num: string;
+  title: string;
+  tags?: string[];
+  images?: ImgSpec[];
+  heroRatio?: 'default' | 'wide' | 'contain';
+  placeholderNote?: string;
+}
+const { num, title, tags = [], images = [], heroRatio = 'default', placeholderNote } = Astro.props;
+const heroClass = heroRatio === 'wide' ? 'feature-frame--wide' : heroRatio === 'contain' ? 'feature-frame--contain' : '';
+const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+<article class="case-study">
+  {images.length > 1 ? (
+    <Slideshow id={slug} images={images} ratio={heroRatio} />
+  ) : images.length === 1 ? (
+    <div class={`feature-frame ${heroClass}`}>
+      <FrameMarks />
+      <img src={withBase(images[0].src)} alt={images[0].alt} loading="lazy" />
+    </div>
+  ) : (
+    <div class={`feature-frame placeholder`}>{placeholderNote || 'Artwork to be added'}</div>
+  )}
+
+  <div class="case-study__row">
+    <div class="case-study__meta">
+      <span class="eyebrow">{num}</span>
+      <h3 class="case-study__title">{title}</h3>
+      {tags.length > 0 && (
+        <div class="case-study__tags">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      )}
+    </div>
+    <div class="case-study__text stack">
+      <slot />
+    </div>
+  </div>
+</article>

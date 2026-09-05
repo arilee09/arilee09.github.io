@@ -687,8 +687,8 @@ main { min-width: 0; }
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "feature feature service music"
-    "feature feature research sports"
-    "film film film film";
+    "research sports film film";
+  align-items: start;
   gap: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2rem);
   max-width: var(--max);
   margin: 2.2rem auto 0;
@@ -749,18 +749,7 @@ main { min-width: 0; }
   position: relative;
 }
 .pin-card--feature .pin-card__thumb, .pin-card--wide .pin-card__thumb { aspect-ratio: 16 / 10; }
-/* the feature and wide cards stretch to their grid rows — let the photo take the slack
-   instead of leaving a block of empty paper under the text */
-.pin-card--feature .pin-card__thumb { aspect-ratio: auto; flex: 1; min-height: 260px; }
-.pin-card--wide { flex-direction: row; }
-.pin-card--wide .pin-card__thumb { aspect-ratio: auto; flex: 1 1 58%; min-height: 240px; }
-.pin-card--wide .pin-card__body { flex: 1 1 42%; justify-content: center; padding: 1.6rem 1.8rem; }
-@media (max-width: 860px) {
-  .pin-card--feature .pin-card__thumb { aspect-ratio: 16 / 10; flex: none; min-height: 0; }
-  .pin-card--wide { flex-direction: column; }
-  .pin-card--wide .pin-card__thumb { aspect-ratio: 16 / 10; flex: none; min-height: 0; }
-  .pin-card--wide .pin-card__body { padding: 1.2rem 1.3rem 1.4rem; }
-}
+
 .pin-card__thumb img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.4s ease;

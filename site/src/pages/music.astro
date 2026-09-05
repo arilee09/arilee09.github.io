@@ -1,85 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ArcMotif from '../components/ArcMotif.astro';
-import Slideshow from '../components/Slideshow.astro';
-import { withBase } from '../lib/url.js';
+import Moment from '../components/Moment.astro';
 ---
-<Layout title="Music" description="Flute performance — Phillips Exeter Symphony Orchestra, chamber music, and community concerts." slug="music" sheetNum="A5.00">
+<Layout title="Music" description="Ten years of flute — Phillips Exeter Symphony Orchestra, solo recitals, and songs aired on TV and in a national ad." slug="music">
   <section class="section section--tight">
-    <span class="eyebrow">A5.00 — Music</span>
+    <span class="eyebrow">Music</span>
     <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Second Flute</h1>
     <p class="lede">
-      The same radiating-arcs shape that won an architecture prize is, literally, how a flute
-      sends sound into a room. Music is where that idea started for me, well before I ever drew it.
+      I picked up the flute in 2016 and haven't put it down since — ten years now, including two
+      seasons as second flute in the Phillips Exeter Symphony Orchestra, two solo recitals at
+      Kukje Recital Hall, and, more recently, writing and producing songs of my own.
     </p>
   </section>
 
   <section class="section">
     <div class="moment">
       <div class="moment__media">
-        <div class="grid-2 grid-2--wide">
-          <div class="frame">
-            <img src={withBase('images/flute-winter-chamber/flute-winter-chamber-01.jpg')} alt="Ari Lee with her parents and flowers after the Winter Chamber Music Concert at Exeter" loading="lazy" />
-          </div>
-          <div class="frame">
-            <img src={withBase('images/flute-winter-chamber/flute-winter-chamber-02.jpg')} alt="Flute, clarinet, and harpsichord trio rehearsing in a glass-walled recital hall" loading="lazy" />
-          </div>
+        <div class="youtube-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/WZRZ5d_fftM"
+            title="Ari Lee — flute solo performance"
+            loading="lazy"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
       <div class="moment__body">
-        <span class="moment__num">01 — Winter Chamber Music Concert</span>
-        <h3 class="moment__title">Six pieces by Isabella Leonarda</h3>
+        <span class="moment__num">01 — Ten Years Running</span>
+        <h3 class="moment__title">Solo Recitals &amp; Symphony Orchestra</h3>
         <p>
-          My parents flew from Korea to see me perform at Exeter for the first time. I've fallen
-          in love with flute here — there are so many opportunities to perform and connect with
-          other musicians.
+          I performed <em>Hypnosis</em> by Ian Clark as a solo recital at Kukje Recital Hall in
+          September 2024, then returned in August 2025 for <em>Syrinx</em> and the Hamburger
+          Sonata. At Exeter I'm second flute in a 50-plus member Symphony Orchestra, with
+          full-scale concerts every semester.
         </p>
+        <p class="caption">Photos from Kukje Recital Hall and the Symphony Orchestra — coming soon.</p>
       </div>
     </div>
 
-    <div class="moment">
-      <div class="moment__media">
-        <Slideshow
-          id="chamber-2023"
-          images={[
-            { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-02.jpg', alt: 'Flute, oboe, and harpsichord trio performing on stage' },
-            { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-01.jpg', alt: 'Two flutists performing during an ensemble concert' },
-            { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-03.jpg', alt: 'Overhead view of the full trio performing in the glass-walled recital hall' },
-          ]}
-        />
-      </div>
-      <div class="moment__body">
-        <span class="moment__num">02 — Chamber Music Concert, Fall 2023</span>
-        <h3 class="moment__title">Flute, Oboe &amp; Harpsichord Trio</h3>
-        <p>
-          My first musical performance at Phillips Exeter Academy — flute, with Sophia on
-          harpsichord and Ashley on oboe. The largest stage I'd performed on yet, and a real
-          lesson in playing in harmony with other instruments and staying on the beat.
-        </p>
-      </div>
-    </div>
+    <Moment
+      num="02"
+      meta="When I Was Young"
+      title="Song Production — On TV, In an Ad"
+      images={[
+        { src: 'images/film/film-01.jpg', alt: 'Ari Lee on set in a school uniform behind camera monitors, filming 소년시대' },
+      ]}
+    >
+      <p>
+        I've been writing and producing original songs about the emotional landscape of
+        adolescence since 2023, with music videos that have surpassed 500,000 views on YouTube.
+        <strong>"When I Was Young," </strong> a song I co-wrote styled as a 1970s pop ballad,
+        became the main theme track for the Korean web series <em>Boyhood</em> (소년시대) — the
+        same production I appear in as an actor — and was later featured in an official
+        McDonald's advertising campaign.
+      </p>
+      <p>
+        I also host <em>More Than K-Pop</em>, a radio show introducing American audiences to
+        Korean music beyond the mainstream.
+      </p>
+    </Moment>
 
-    <div class="moment">
-      <div class="moment__media">
-        <Slideshow
-          id="riverwoods"
-          images={[
-            { src: 'images/nursing-home-concert/nursing-home-concert-01.jpg', alt: 'Ari Lee performing flute for residents at Riverwoods Nursing Home, sheet music for Allegretto by Benjamin Godard in the foreground' },
-            { src: 'images/nursing-home-concert/nursing-home-concert-03.jpg', alt: 'A harpist performing for residents seated in the Riverwoods common room' },
-            { src: 'images/nursing-home-concert/nursing-home-concert-02.jpg', alt: 'A handwritten thank-you note and gift card from Riverwoods addressed to Ari Lee and the other musicians' },
-          ]}
-        />
-      </div>
-      <div class="moment__body">
-        <span class="moment__num">03 — Riverwoods Nursing Home Concert</span>
-        <h3 class="moment__title">A flute solo, for an audience that noticed</h3>
-        <p>
-          A group of musicians from Exeter — harp, cello, piano, saxophone, and flute — played for
-          the Riverwoods community. I performed <em>Allegretto</em> by Benjamin Godard as a solo.
-          Playing for this audience was different from playing for a hall — and they wrote back.
-        </p>
-      </div>
-    </div>
+    <Moment
+      num="03 — Chamber Music Concert, Fall 2023"
+      title="Flute, Oboe &amp; Harpsichord Trio"
+      images={[
+        { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-02.jpg', alt: 'Flute, oboe, and harpsichord trio performing on stage' },
+        { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-01.jpg', alt: 'Two flutists performing during an ensemble concert' },
+        { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-03.jpg', alt: 'Overhead view of the full trio performing in the glass-walled recital hall' },
+      ]}
+    >
+      <p>
+        My first musical performance at Phillips Exeter Academy — flute, with Sophia on
+        harpsichord and Ashley on oboe. The largest stage I'd performed on yet, and a real
+        lesson in playing in harmony with other instruments and staying on the beat.
+      </p>
+    </Moment>
+
+    <Moment
+      num="04 — Winter Chamber Music Concert"
+      title="Six pieces by Isabella Leonarda"
+      images={[
+        { src: 'images/flute-winter-chamber/flute-winter-chamber-01.jpg', alt: 'Ari Lee with her parents and flowers after the Winter Chamber Music Concert at Exeter' },
+        { src: 'images/flute-winter-chamber/flute-winter-chamber-02.jpg', alt: 'Flute, clarinet, and harpsichord trio rehearsing in a glass-walled recital hall' },
+      ]}
+    >
+      <p>
+        My parents flew from Korea to see me perform at Exeter for the first time. I've fallen
+        in love with flute here — there are so many opportunities to perform and connect with
+        other musicians.
+      </p>
+    </Moment>
+
+    <Moment
+      num="05 — Riverwoods Nursing Home Concert"
+      title="A flute solo, for an audience that noticed"
+      images={[
+        { src: 'images/nursing-home-concert/nursing-home-concert-01.jpg', alt: 'Ari Lee performing flute for residents at Riverwoods Nursing Home, sheet music for Allegretto by Benjamin Godard in the foreground' },
+        { src: 'images/nursing-home-concert/nursing-home-concert-03.jpg', alt: 'A harpist performing for residents seated in the Riverwoods common room' },
+        { src: 'images/nursing-home-concert/nursing-home-concert-02.jpg', alt: 'A handwritten thank-you note and gift card from Riverwoods addressed to Ari Lee and the other musicians' },
+      ]}
+    >
+      <p>
+        A group of musicians from Exeter — harp, cello, piano, saxophone, and flute — played for
+        the Riverwoods community. I performed <em>Allegretto</em> by Benjamin Godard as a solo.
+        Playing for this audience was different from playing for a hall — and they wrote back.
+      </p>
+    </Moment>
   </section>
 
   <div class="arc-divider"><ArcMotif size={48} /></div>
@@ -100,12 +128,20 @@ import { withBase } from '../lib/url.js';
         <span class="award-year">2023–2025</span>
       </li>
       <li>
-        <div><span class="award-title">ABRSM Flute</span><span class="award-detail">Distinction — 130/150</span></div>
+        <div><span class="award-title">ABRSM Flute</span><span class="award-detail">Grade 6, Merit — 125/150</span></div>
+        <span class="award-year">2023</span>
+      </li>
+      <li>
+        <div><span class="award-title">ABRSM Flute</span><span class="award-detail">Grade 5, Distinction — 130/150</span></div>
         <span class="award-year">2022</span>
       </li>
       <li>
-        <div><span class="award-title">ABRSM Flute</span><span class="award-detail">Merit — 125/150</span></div>
-        <span class="award-year">2023</span>
+        <div><span class="award-title">ABRSM Music Theory</span><span class="award-detail">Grade 5, Distinction</span></div>
+        <span class="award-year">2022</span>
+      </li>
+      <li>
+        <div><span class="award-title">Radio Host — More Than K-Pop</span><span class="award-detail">Introducing American audiences to Korean music beyond mainstream K-pop</span></div>
+        <span class="award-year">2024–Present</span>
       </li>
     </ul>
   </section>

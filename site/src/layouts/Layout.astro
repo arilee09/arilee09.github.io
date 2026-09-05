@@ -1,21 +1,20 @@
 ---
 import '../styles/global.css';
 import SheetNav from '../components/SheetNav.astro';
-import TitleBlock from '../components/TitleBlock.astro';
-import { neighbors } from '../data/sheets.js';
+import { neighbors, sheetBySlug } from '../data/sheets.js';
 import { withBase } from '../lib/url.js';
 
 interface Props {
   title: string;
   description?: string;
   slug: string;
-  sheetNum: string;
 }
-const { title, description = 'Ari Lee — Architecture & Art portfolio.', slug, sheetNum } = Astro.props;
+const { title, description = 'Ari Lee — Architecture & Art portfolio.', slug } = Astro.props;
 const { prev, next } = neighbors(slug);
+const theme = sheetBySlug(slug)?.theme || 'clay';
 
 const favicon =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%230a0a0c'/%3E%3Cg fill='none' stroke='%233355ff' stroke-width='6' stroke-linecap='round'%3E%3Cpath d='M30,45 A15,15 0 0 1 30,75'/%3E%3Cpath d='M30,30 A30,30 0 0 1 30,90'/%3E%3Cpath d='M30,15 A45,45 0 0 1 30,105'/%3E%3C/g%3E%3C/svg%3E";
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='16' fill='%23c8552c'/%3E%3Cg fill='none' stroke='%23faf6ee' stroke-width='7' stroke-linecap='round'%3E%3Cpath d='M30,45 A15,15 0 0 1 30,75'/%3E%3Cpath d='M30,30 A30,30 0 0 1 30,90'/%3E%3Cpath d='M30,15 A45,45 0 0 1 30,105'/%3E%3C/g%3E%3C/svg%3E";
 ---
 <!doctype html>
 <html lang="en">
@@ -25,8 +24,10 @@ const favicon =
     <title>{title} · Ari Lee</title>
     <meta name="description" content={description} />
     <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body>
+  <body class={`theme-${theme}`}>
     <div class="shell">
       <SheetNav />
       <main>
@@ -34,15 +35,15 @@ const favicon =
         <footer class="sheet-footer">
           <div class="sheet-footer__nav">
             <a href={prev ? withBase(prev.slug) : undefined} style={!prev ? 'visibility:hidden' : ''}>
-              <span>{prev?.num}</span>
+              <span>Previous</span>
               ← {prev?.nav}
             </a>
             <a href={next ? withBase(next.slug) : undefined} style={!next ? 'visibility:hidden' : ''}>
-              <span>{next?.num}</span>
+              <span>Next</span>
               {next?.nav} →
             </a>
           </div>
-          <TitleBlock num={sheetNum} title={title} />
+          <p class="sheet-footer__byline">Ari Lee — Architecture &amp; Art Portfolio, Phillips Exeter Academy</p>
         </footer>
       </main>
     </div>

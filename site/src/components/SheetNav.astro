@@ -7,9 +7,9 @@ function normalize(p) {
 }
 const current = normalize(Astro.url.pathname);
 ---
-<nav class="sheet-nav" id="sheet-nav" aria-label="Drawing set index">
+<nav class="sheet-nav" id="sheet-nav" aria-label="Site navigation">
   <button class="sheet-nav__toggle" id="sheet-nav-toggle" aria-expanded="false" aria-controls="sheet-nav-list">
-    <span>Sheet Index</span>
+    <span>Menu</span>
     <span aria-hidden="true">☰</span>
   </button>
 
@@ -23,8 +23,7 @@ const current = normalize(Astro.url.pathname);
       return (
         <li class="sheet-nav__item">
           <a href={href} class={active ? 'active' : ''} aria-current={active ? 'page' : undefined}>
-            <span class="sheet-nav__num">{s.num}</span>
-            <span>{s.nav}</span>
+            {s.nav}
           </a>
         </li>
       );

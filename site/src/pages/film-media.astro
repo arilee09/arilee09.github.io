@@ -2,16 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import CaseStudy from '../components/CaseStudy.astro';
 import ArcMotif from '../components/ArcMotif.astro';
-import Slideshow from '../components/Slideshow.astro';
+import Moment from '../components/Moment.astro';
 import { withBase } from '../lib/url.js';
 ---
-<Layout title="Film & Media" description="Set-design internship, newsroom shadowing, photography, and songwriting." slug="film-media" sheetNum="A4.00">
+<Layout title="Film & Photography" description="Set-design internship, newsroom shadowing, and photography — including a Scholastic Bronze Key." slug="film-media">
   <section class="section section--tight">
-    <span class="eyebrow">A4.00 — Film &amp; Media</span>
+    <span class="eyebrow">Film &amp; Photography</span>
     <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Building Sets, Reading Light</h1>
     <p class="lede">
-      Everything here is still spatial thinking, just aimed at a screen instead of a site: how a
-      room is built to be looked at, and how a frame decides what a viewer feels.
+      Everything here is still spatial thinking, just aimed at a screen or a camera instead of a
+      site: how a room is built to be looked at, and how a frame decides what a viewer feels.
     </p>
   </section>
 
@@ -38,7 +38,7 @@ import { withBase } from '../lib/url.js';
       </p>
       <p>
         <em>Boyhood</em> is also the show that ended up using an original song of mine as its
-        theme track — see Song Production, below.
+        theme track — see <a href={withBase('music')}>Music</a>.
       </p>
     </CaseStudy>
 
@@ -70,69 +70,63 @@ import { withBase } from '../lib/url.js';
   <div class="arc-divider"><ArcMotif size={48} /></div>
 
   <section class="section">
-    <div class="moment">
-      <div class="moment__media">
-        <Slideshow
-          id="boys-generation"
-          images={[
-            { src: 'images/film/film-01.jpg', alt: 'Ari Lee on set in a school uniform behind camera monitors, filming 소년시대' },
-            { src: 'images/film/film-03.jpg', alt: 'Ari Lee with three young cast members in school uniform on a night street set' },
-            { src: 'images/film/film-04.jpg', alt: 'Ari Lee in costume backstage with a fellow young actor' },
-            { src: 'images/film/film-05.jpg', alt: 'Ari Lee in costume in the wardrobe trailer' },
-            { src: 'images/film/film-02.jpg', alt: 'A camera crane operator filming a night scene on the 소년시대 set' },
-          ]}
-        />
-      </div>
-      <div class="moment__body">
-        <span class="moment__num">03 — On-Screen</span>
-        <h3 class="moment__title">소년시대 (Boys' Generation)</h3>
-        <p>Played a middle school girl in the film 소년시대 — a summer on the other side of the set from the drafting table.</p>
-      </div>
-    </div>
+    <Moment
+      num="03 — On-Screen"
+      title="소년시대 (Boyhood)"
+      images={[
+        { src: 'images/film/film-01.jpg', alt: 'Ari Lee on set in a school uniform behind camera monitors, filming 소년시대' },
+        { src: 'images/film/film-03.jpg', alt: 'Ari Lee with three young cast members in school uniform on a night street set' },
+        { src: 'images/film/film-04.jpg', alt: 'Ari Lee in costume backstage with a fellow young actor' },
+        { src: 'images/film/film-05.jpg', alt: 'Ari Lee in costume in the wardrobe trailer' },
+        { src: 'images/film/film-02.jpg', alt: 'A camera crane operator filming a night scene on the 소년시대 set' },
+      ]}
+    >
+      <p>Played a middle school girl in the web series 소년시대 (Boyhood) — a summer on the other side of the set from the drafting table, and the same production I co-wrote the theme song for (see <a href={withBase('music')}>Music</a>).</p>
+    </Moment>
 
-    <div class="moment">
-      <div class="moment__media">
-        <Slideshow
-          id="differentiable"
-          ratio="contain"
-          images={[
-            { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details — iron railings, stairs, and moldings mounted as overlapping blocks' },
-            { src: 'images/photography/photography-01.jpg', alt: 'A second cluster of the black and white photographic assemblage, including a library interior and a carved capital' },
-            { src: 'images/photography/photography-04.jpg', alt: 'The full exhibition board for Differentiable, with the Class of 1945 Library facade, a "Order is not enough — Louis Kahn" quote card, and detail studies' },
-            { src: 'images/photography/photography-05.jpg', alt: 'Ari Lee beside the Differentiable exhibition board' },
-          ]}
-        />
-      </div>
-      <div class="moment__body">
-        <span class="moment__num">04 — Scholastic Art &amp; Writing, Bronze Key</span>
-        <h3 class="moment__title">Differentiable (2026)</h3>
-        <p>
-          A series photographing architectural details and studio objects — from the concrete
-          cross on the atrium of Louis Kahn's Class of 1945 Library to a small glass prism —
-          layered and overlapped so one image bleeds into the next.
-        </p>
-        <p style="font-family:var(--font-display); font-style:italic; color:var(--cyanotype); font-size:1.05rem; border-left:3px solid var(--blueprint); padding-left:1rem;">
-          "I liked the idea that photographs could start to feel connected just through how they
-          were placed next to each other, just like how architecture and ordinary objects can look
-          like they belong perfectly together."
-        </p>
-      </div>
-    </div>
+    <Moment
+      num="04 — Scholastic Art & Writing, Bronze Key"
+      title="Differentiable (2026)"
+      images={[
+        { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details — iron railings, stairs, and moldings mounted as overlapping blocks' },
+        { src: 'images/photography/photography-01.jpg', alt: 'A second cluster of the black and white photographic assemblage, including a library interior and a carved capital' },
+        { src: 'images/photography/photography-04.jpg', alt: 'The full exhibition board for Differentiable, with the Class of 1945 Library facade, a "Order is not enough — Louis Kahn" quote card, and detail studies' },
+        { src: 'images/photography/photography-05.jpg', alt: 'Ari Lee beside the Differentiable exhibition board' },
+      ]}
+    >
+      <p>
+        A series photographing architectural details and studio objects — from the concrete
+        cross on the atrium of Louis Kahn's Class of 1945 Library to a small glass prism —
+        layered and overlapped so one image bleeds into the next.
+      </p>
+      <p class="pull-quote">
+        "I liked the idea that photographs could start to feel connected just through how they
+        were placed next to each other, just like how architecture and ordinary objects can look
+        like they belong perfectly together."
+      </p>
+    </Moment>
 
-    <div class="moment">
-      <div class="moment__media">
-        <div class="feature-frame placeholder">500K+ VIEWS · YOUTUBE</div>
-      </div>
-      <div class="moment__body">
-        <span class="moment__num">05 — Song Production</span>
-        <h3 class="moment__title">Lyricist &amp; Producer</h3>
-        <p>
-          Writing and producing original songs about the emotional landscape of adolescence since
-          2023, with accompanying music videos that have surpassed 500,000 views on YouTube. One
-          original composition became the main theme track for the television series
-          <em>Boyhood</em>; another was featured in an official McDonald's advertising campaign.
-        </p>
-      </div>
-    </div>
+    <Moment
+      num="05 — Personal Work"
+      title="Photography, Ongoing"
+      images={[
+        { src: 'images/photography-personal/photography-personal-01.jpg', alt: 'Black-and-white studio portrait of a person with curly hair and glasses, laughing' },
+        { src: 'images/photography-personal/photography-personal-02.jpg', alt: 'Black-and-white studio portrait, head tilted down mid-laugh' },
+        { src: 'images/photography-personal/photography-personal-04.jpg', alt: 'Black-and-white side-profile shoulder portrait, eyes closed' },
+        { src: 'images/photography-personal/photography-personal-09.jpg', alt: 'Candid color portrait in an apple orchard, picking fruit from an overhead branch' },
+        { src: 'images/photography-personal/photography-personal-10.jpg', alt: 'Self-portrait holding a vintage Minolta film camera up to the face' },
+        { src: 'images/photography-personal/photography-personal-05.jpg', alt: 'Macro photo of red crabapples hanging from a snow-dusted branch' },
+        { src: 'images/photography-personal/photography-personal-06.jpg', alt: 'A second macro photo of red crabapples in the snow' },
+        { src: 'images/photography-personal/photography-personal-03.jpg', alt: 'Black-and-white macro photo of three pushpins on a scored wooden surface' },
+        { src: 'images/photography-personal/photography-personal-07.jpg', alt: 'Night photo of a building with exposed roof trusses under a moon and stars' },
+        { src: 'images/photography-personal/photography-personal-08.jpg', alt: 'View through a sheer-curtained window of autumn tree branches against a blue sky' },
+      ]}
+    >
+      <p>
+        Portraits, still life, and whatever catches the light — shot on film and digital, and
+        posted as I go.
+      </p>
+      <p><a href="https://www.instagram.com/drillsflicks/" target="_blank" rel="noopener noreferrer">More on Instagram — @drillsflicks →</a></p>
+    </Moment>
   </section>
 </Layout>

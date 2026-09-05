@@ -1,72 +1,105 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ArcMotif from '../components/ArcMotif.astro';
-import ArcScene from '../components/ArcScene.astro';
 import { sheets } from '../data/sheets.js';
 import { withBase } from '../lib/url.js';
 
 const rest = sheets.slice(1);
 const thumbs = {
   'design-work': { src: 'images/aia/aia-03.jpg', alt: 'The Arc Resonance Center presentation boards at the AIA New Hampshire competition' },
-  'film-media': { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details' },
+  'service': { src: 'images/hair-donation/hair-donation-02.jpg', alt: 'Braided hair donations bundled for Wigs for Kids' },
   'music': { src: 'images/flute-2023-chamber-music/flute-2023-chamber-music-02.jpg', alt: 'Flute, oboe, and harpsichord trio performing on stage' },
-  'debate': { src: 'images/stanford-debate/stanford-debate-01.jpg', alt: 'Ari Lee holding trophies at the Stanford debate invitational' },
-  'service-awards': { src: 'images/hair-donation/hair-donation-02.jpg', alt: 'Braided hair donations bundled for Wigs for Kids' },
+  'film-media': { src: 'images/photography/photography-02.jpg', alt: 'Black and white photographic assemblage of architectural details' },
 };
 const descriptions = {
-  'about': 'The sand, the elevator, the window — how a math brain learned to design for human happiness.',
   'design-work': 'AIA New Hampshire 1st place, a Scholastic Silver Key, and a Cornell studio semester.',
-  'process': 'The research thread underneath the design work, from a shoe full of sand to a dorm window.',
-  'film-media': 'Set-design for K-dramas, a morning at SBS News, and a Scholastic Bronze Key in photography.',
-  'music': 'Second flute in the Exeter Symphony, chamber recitals, and a nursing-home concert.',
-  'debate': 'Public Forum debate at Stanford and Harvard, Political Union, and student government.',
-  'service-awards': 'Three years of hair donation and the full record of competitions and honors.',
-  'contact': 'Get in touch, or download the resume.',
+  'service': 'Hair donated three times over ten years, plus the mentoring and tutoring that fills the rest of the week.',
+  'music': 'Ten years of flute, two solo recitals, and songs that made it onto TV and into a McDonald’s ad.',
+  'research': 'The sand, the elevator, the window — how a math brain learned to design for human happiness.',
+  'film-media': 'Set design for K-dramas, a morning at SBS News, and a Scholastic Bronze Key in photography.',
+  'sports': 'Diving, skiing, lifeguarding, and co-heading a weightlifting club — more on the way.',
+  'contact': 'Get in touch.',
+};
+const areas = {
+  'design-work': 'feature',
+  'service': 'service',
+  'music': 'music',
+  'research': 'research',
+  'film-media': 'film',
+  'sports': 'sports',
+  'contact': 'contact',
+};
+const pinLabels = {
+  'design-work': 'start here →',
+  'service': 'ten years running',
+  'music': 'hear it',
+  'research': 'the long way round',
+  'film-media': 'behind the scenes',
+  'sports': 'off the drafting table',
+  'contact': 'say hi',
+};
+const themeColor = {
+  clay: 'var(--clay)', ochre: 'var(--ochre)', berry: 'var(--berry)',
+  moss: 'var(--moss)', slate: 'var(--slate)', cornflower: 'var(--cornflower)',
 };
 ---
-<Layout title="Cover" slug="" sheetNum="A0.00">
+<Layout title="Cover" slug="">
   <section class="hero">
-    <ArcScene />
     <div class="hero__content">
-      <span class="eyebrow" style="color:var(--sky)">Ari Lee — Architecture &amp; Art Portfolio</span>
-      <h1 class="hero__thesis split-title">Geometry of<br /><em>Happiness</em></h1>
+      <span class="eyebrow">Ari Lee — Architecture &amp; Art Portfolio</span>
+      <h1 class="hero__thesis reveal">Geometry of<br /><em>Happiness</em></h1>
       <p class="hero__sub reveal">
-        "Happiness is not something to optimize. It's something spaces quietly make possible." —
-        a student at Phillips Exeter Academy applying to study architecture and art. This site is
-        a drawing set: nine numbered sheets tracing the work, the thinking behind it, and the rest
-        of what I spend my hours on.
+        Hi, I'm Ari — a student at Phillips Exeter Academy who designs buildings, takes
+        photographs, and plays flute, roughly in that order of how much time I spend on each.
+        This site is where all of it lives: the studio work, ten years of music, the hair I've
+        grown out three times to donate, and the rest of what fills my week.
       </p>
       <div class="highlight-strip reveal">
-        <span>AIA NEW HAMPSHIRE — 1ST PLACE</span>
-        <span>SCHOLASTIC ART &amp; WRITING — SILVER + BRONZE KEY</span>
-        <span>PHILLIPS EXETER ACADEMY — CLASS OF 2027</span>
+        <span>AIA New Hampshire — 1st Place</span>
+        <span>Scholastic Art &amp; Writing — Silver + Bronze Key</span>
+        <span>Phillips Exeter Academy — Class of 2027</span>
+      </div>
+      <div class="hero__annotation reveal">
+        <svg width="70" height="46" viewBox="0 0 70 46" fill="none" aria-hidden="true">
+          <path d="M4,6 C 14,26 34,10 30,28 C 27,40 46,36 62,34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" />
+          <path d="M52,28 L63,34 L54,42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+        <span>everything's pinned up below</span>
       </div>
     </div>
-    <span class="scroll-cue">Scroll</span>
   </section>
 
-  <section class="section">
+  <section class="pinboard">
     <div class="section-head reveal">
-      <span class="eyebrow">Sheet Index</span>
-      <h2>What's on this set</h2>
+      <span class="eyebrow">Start here</span>
+      <h2>What's on this site</h2>
     </div>
-    <div class="index-grid reveal-group">
-      {rest.map((s) => (
-        <a class="index-card" href={withBase(s.slug)}>
-          {thumbs[s.slug] ? (
-            <div class="index-card__thumb">
-              <img src={withBase(thumbs[s.slug].src)} alt={thumbs[s.slug].alt} loading="lazy" />
+    <div class="pin-grid reveal-group">
+      {rest.map((s) => {
+        const isFeature = s.slug === 'design-work';
+        const isWide = s.slug === 'film-media';
+        const pinColor = themeColor[s.theme] || 'var(--accent)';
+        return (
+          <a
+            class={`pin-card ${isFeature ? 'pin-card--feature' : ''} ${isWide ? 'pin-card--wide' : ''}`}
+            style={`grid-area:${areas[s.slug]}; --pin-color:${pinColor};`}
+            href={withBase(s.slug)}
+          >
+            {thumbs[s.slug] ? (
+              <div class="pin-card__thumb">
+                <img src={withBase(thumbs[s.slug].src)} alt={thumbs[s.slug].alt} loading="lazy" />
+              </div>
+            ) : (
+              <div class="pin-card__thumb no-img"><ArcMotif size={36} /></div>
+            )}
+            <div class="pin-card__body">
+              <span class="pin-card__label">{pinLabels[s.slug]}</span>
+              <h3 class="pin-card__title">{s.title}</h3>
+              <p class="pin-card__desc">{descriptions[s.slug]}</p>
             </div>
-          ) : (
-            <div class="index-card__thumb no-img"><ArcMotif size={40} /></div>
-          )}
-          <div class="index-card__body">
-            <span class="index-card__num">{s.num}</span>
-            <h3 class="index-card__title">{s.title}</h3>
-            <p class="index-card__desc">{descriptions[s.slug]}</p>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   </section>
 </Layout>

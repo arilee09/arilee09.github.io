@@ -1,0 +1,112 @@
+---
+import { withBase } from '../lib/url.js';
+
+interface ImgSpec { src: string; alt: string; }
+interface Props {
+  id: string;
+  images: ImgSpec[];
+}
+const { id, images } = Astro.props;
+---
+<div class="gallery" id={`gallery-${id}`} data-gallery>
+  <div class="gallery__grid">
+    {images.map((img, i) => (
+      <button type="button" class="gallery__item" data-item aria-label={`View larger: ${img.alt}`}>
+        <span class="gallery__item-frame">
+          <img src={withBase(img.src)} alt={img.alt} loading={i < 4 ? 'eager' : 'lazy'} />
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <div class="lightbox" data-lightbox hidden>
+    <div class="lightbox__backdrop" data-lightbox-backdrop></div>
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
+      <button type="button" class="lightbox__btn lightbox__btn--prev" data-lightbox-prev aria-label="Previous image">&lsaquo;</button>
+      <img class="lightbox__img" data-lightbox-img src="" alt="" />
+      <button type="button" class="lightbox__btn lightbox__btn--next" data-lightbox-next aria-label="Next image">&rsaquo;</button>
+      <div class="lightbox__meta">
+        <span class="lightbox__caption" data-lightbox-caption></span>
+        <span class="lightbox__counter" data-lightbox-counter></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initGalleries(root: ParentNode) {
+    root.querySelectorAll<HTMLElement>('[data-gallery]').forEach((el) => {
+      if (el.dataset.ready) return;
+      el.dataset.ready = '1';
+
+      const items = Array.from(el.querySelectorAll<HTMLButtonElement>('[data-item]'));
+      const lightbox = el.querySelector<HTMLElement>('[data-lightbox]');
+      const img = el.querySelector<HTMLImageElement>('[data-lightbox-img]');
+      const caption = el.querySelector<HTMLElement>('[data-lightbox-caption]');
+      const counter = el.querySelector<HTMLElement>('[data-lightbox-counter]');
+      const closeBtn = el.querySelector<HTMLButtonElement>('[data-lightbox-close]');
+      const prevBtn = el.querySelector<HTMLButtonElement>('[data-lightbox-prev]');
+      const nextBtn = el.querySelector<HTMLButtonElement>('[data-lightbox-next]');
+      const backdrop = el.querySelector<HTMLElement>('[data-lightbox-backdrop]');
+      if (!lightbox || !img || items.length === 0) return;
+
+      let index = 0;
+      let lastFocused: HTMLElement | null = null;
+      const focusable = [prevBtn, nextBtn, closeBtn].filter(Boolean) as HTMLElement[];
+
+      const render = () => {
+        const src = items[index].querySelector('img')!;
+        img.src = src.src;
+        img.alt = src.alt;
+        if (caption) caption.textContent = src.alt;
+        if (counter) counter.textContent = `${index + 1} / ${items.length}`;
+      };
+
+      const open = (i: number, trigger: HTMLElement) => {
+        index = i;
+        lastFocused = trigger;
+        render();
+        lightbox.hidden = false;
+        document.body.classList.add('lightbox-open');
+        closeBtn?.focus();
+      };
+
+      const close = () => {
+        lightbox.hidden = true;
+        document.body.classList.remove('lightbox-open');
+        lastFocused?.focus();
+      };
+
+      const go = (delta: number) => {
+        index = (index + delta + items.length) % items.length;
+        render();
+      };
+
+      items.forEach((btn, i) => btn.addEventListener('click', () => open(i, btn)));
+      closeBtn?.addEventListener('click', close);
+      backdrop?.addEventListener('click', close);
+      prevBtn?.addEventListener('click', () => go(-1));
+      nextBtn?.addEventListener('click', () => go(1));
+
+      lightbox.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'ArrowLeft') { go(-1); return; }
+        if (e.key === 'ArrowRight') { go(1); return; }
+        if (e.key === 'Tab' && focusable.length) {
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    });
+  }
+
+  initGalleries(document);
+</script>

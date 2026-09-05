@@ -1,26 +1,11 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reduceMotion) {
-  // Headline character reveal
-  document.querySelectorAll('.split-title').forEach((el) => {
-    const split = new SplitText(el, { type: 'chars' });
-    gsap.from(split.chars, {
-      opacity: 0,
-      y: 24,
-      rotateX: -40,
-      duration: 0.6,
-      stagger: 0.014,
-      ease: 'expo.out',
-      delay: 0.15,
-    });
-  });
-
   // Staggered reveal for grouped content (cards, case studies, list items)
   document.querySelectorAll('.reveal-group').forEach((group) => {
     const items = group.children;

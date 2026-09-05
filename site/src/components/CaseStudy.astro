@@ -1,7 +1,6 @@
 ---
 import { withBase } from '../lib/url.js';
-import FrameMarks from './FrameMarks.astro';
-import Slideshow from './Slideshow.astro';
+import Gallery from './Gallery.astro';
 
 interface ImgSpec { src: string; alt: string; }
 interface Props {
@@ -18,10 +17,9 @@ const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g,
 ---
 <article class="case-study">
   {images.length > 1 ? (
-    <Slideshow id={slug} images={images} ratio={heroRatio} />
+    <Gallery id={slug} images={images} />
   ) : images.length === 1 ? (
     <div class={`feature-frame ${heroClass}`}>
-      <FrameMarks />
       <img src={withBase(images[0].src)} alt={images[0].alt} loading="lazy" />
     </div>
   ) : (

@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import CaseStudy from '../components/CaseStudy.astro';
 import ArcMotif from '../components/ArcMotif.astro';
 ---
-<Layout title="Design Work" description="Architecture and design projects — AIA New Hampshire, Scholastic Art & Writing, Cornell Summer Architecture." slug="design-work" sheetNum="A2.00">
+<Layout title="Art & Architecture" description="Architecture and design projects — AIA New Hampshire, Scholastic Art & Writing, Cornell Summer Architecture." slug="design-work">
   <section class="section section--tight">
-    <span class="eyebrow">A2.00 — Design Work</span>
+    <span class="eyebrow">Art &amp; Architecture</span>
     <h1 style="font-size:clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">The Studio</h1>
     <p class="lede">
-      Three design projects, each pushing a little further from the drafting table into how
-      people actually move through and feel a space.
+      Three projects, each pushing a little further from the drafting table into how people
+      actually move through and feel a space. This is the work I want you to see first.
     </p>
   </section>
 
@@ -42,12 +42,21 @@ import ArcMotif from '../components/ArcMotif.astro';
       num="02 — Scholastic Art & Writing Awards, Silver Key"
       title="A Playground for Ithaca State Park"
       tags={["Landscape / Play", "Scholastic Art & Writing", "Silver Key"]}
-      placeholderNote="Renderings to be added"
+      images={[
+        { src: 'images/ithaca-playground/ithaca-playground-02.jpg', alt: 'Rendering of the Ithaca State Park playground at sunset, showing the diving platform, bridge, and ladder structure over the water' },
+        { src: 'images/ithaca-playground/ithaca-playground-01.jpg', alt: 'Hand-colored concept diagram for the playground, annotated with Walk, Swim, Dive, Climb, Run, Picnic, and Rest' },
+        { src: 'images/ithaca-playground/ithaca-playground-03.jpg', alt: 'Four elevation and section studies of the climbing structure, diving platform, and seating' },
+        { src: 'images/ithaca-playground/ithaca-playground-04.jpg', alt: 'Physical model of the playground, built from wood and cardboard, showing the mast, ladder ramp, and stepping stones' },
+        { src: 'images/ithaca-playground/ithaca-playground-05.jpg', alt: 'Detail of the physical model showing the platform railings and stepped seating' },
+        { src: 'images/ithaca-playground/ithaca-playground-06.jpg', alt: 'Detail of the physical model showing the ladder, mast, and stone paths' },
+      ]}
     >
       <p>
-        Designed around the concept of attraction and color: bold hues used deliberately to guide
-        movement and draw people through the site, rather than as decoration applied after the
-        plan was finished.
+        Designed for Stewart Park around the concept of attraction and framing: instead of
+        inventing focal points from a blank site, every structure — the climbing bars, the
+        viewing platform, the diving tower — is centered on something already there. Bold color
+        is used deliberately to guide movement and draw people through the site, not as
+        decoration applied after the plan was finished.
       </p>
       <p>
         Recognized with a Silver Key in the national Scholastic Art &amp; Writing Awards.
@@ -83,7 +92,7 @@ import ArcMotif from '../components/ArcMotif.astro';
       <p>
         Research component focused on Luis Barragán's Casa Gilardi and Louis Kahn's Class of 1945
         Library — a building I'd photograph again later, for an entirely different project (see
-        Sheet A4.00).
+        Film &amp; Photography).
       </p>
     </CaseStudy>
   </section>
@@ -101,6 +110,11 @@ import ArcMotif from '../components/ArcMotif.astro';
         <div><span class="award-title">Architecture Foundation of San Francisco</span><span class="award-detail">3rd place</span></div>
         <span class="award-year">2026</span>
       </li>
+      <li>
+        <div><span class="award-title">Exeter Architecture Club</span><span class="award-detail">Meeting practicing architects, visiting active construction sites, sketching and modeling buildings around campus</span></div>
+        <span class="award-year">2023–Present</span>
+      </li>
     </ul>
+    <p class="caption" style="margin-top:1.2rem;">More artwork and renderings coming soon.</p>
   </section>
 </Layout>

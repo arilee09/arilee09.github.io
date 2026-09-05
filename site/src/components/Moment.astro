@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../lib/url.js';
+import Gallery from './Gallery.astro';
 
 interface ImgSpec { src: string; alt: string; }
 interface Props {
@@ -7,24 +8,21 @@ interface Props {
   title: string;
   meta?: string;
   images?: ImgSpec[];
+  placeholderNote?: string;
 }
-const { num, title, meta, images = [] } = Astro.props;
-const isSingle = images.length === 1;
+const { num, title, meta, images = [], placeholderNote } = Astro.props;
+const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 ---
 <article class="moment">
   <div class="moment__media">
-    {isSingle ? (
+    {images.length > 1 ? (
+      <Gallery id={slug} images={images} />
+    ) : images.length === 1 ? (
       <div class="feature-frame feature-frame--sm">
         <img src={withBase(images[0].src)} alt={images[0].alt} loading="lazy" />
       </div>
     ) : (
-      <div class="grid-2">
-        {images.map((img) => (
-          <div class="frame">
-            <img src={withBase(img.src)} alt={img.alt} loading="lazy" />
-          </div>
-        ))}
-      </div>
+      <div class="feature-frame feature-frame--sm placeholder">{placeholderNote || 'Photos coming soon'}</div>
     )}
   </div>
   <div class="moment__body">

@@ -1,19 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ArcMotif from '../components/ArcMotif.astro';
 ---
-<Layout title="Contact" description="Get in touch with Ari Lee." slug="contact" sheetNum="A8.00">
+<Layout title="Contact" description="Get in touch with Ari Lee." slug="contact">
   <section class="hero" style="padding-bottom:clamp(2.5rem,6vw,4rem);">
-    <ArcMotif size={64} class="hero-arc" />
-    <span class="eyebrow" style="color:var(--sky)">A8.00 — Contact</span>
-    <h1 class="hero__thesis" style="max-width:20ch;">Let's talk about a space worth designing.</h1>
-    <p class="hero__sub">
-      Phillips Exeter Academy · Exeter, New Hampshire · Class of 2027
-    </p>
-    <p style="margin-top:1.6rem;">
-      <a href="mailto:arilee090311@gmail.com" style="color:#fff; font-family:var(--font-mono); font-size:0.95rem; border-bottom:1px solid var(--sky);">
-        arilee090311@gmail.com
-      </a>
-    </p>
+    <div class="hero__content">
+      <span class="eyebrow">Contact</span>
+      <h1 class="hero__thesis" style="max-width:20ch; font-size:clamp(2.2rem,6vw,4.4rem);">Let's talk about a space worth designing.</h1>
+      <p class="hero__sub">
+        Phillips Exeter Academy · Exeter, New Hampshire · Class of 2027
+      </p>
+      <p style="margin-top:1.6rem;">
+        <a href="mailto:arilee090311@gmail.com" style="color:var(--ink); font-family:var(--font-display); font-weight:600; font-size:1.05rem; border-bottom:1px solid var(--accent);">
+          arilee090311@gmail.com
+        </a>
+      </p>
+    </div>
   </section>
 </Layout>

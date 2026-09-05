@@ -331,10 +331,22 @@ main { min-width: 0; }
 /* ---------- gallery (thumbnail grid) + lightbox ---------- */
 
 .gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.6rem 1.1rem;
+  --gap-x: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem var(--gap-x);
   padding-top: 0.6rem;
+}
+.gallery__grid > .gallery__item {
+  flex: 0 0 calc((100% - (var(--cols, 4) - 1) * var(--gap-x)) / var(--cols, 4));
+  max-width: calc((100% - (var(--cols, 4) - 1) * var(--gap-x)) / var(--cols, 4));
+}
+@media (max-width: 720px) {
+  .gallery__grid > .gallery__item {
+    flex-basis: calc((100% - var(--gap-x)) / 2);
+    max-width: calc((100% - var(--gap-x)) / 2);
+  }
 }
 
 /* each photo sits taped into the page, slightly askew — a sketchbook, not a stock grid */
@@ -676,7 +688,7 @@ main { min-width: 0; }
   grid-template-areas:
     "feature feature service music"
     "feature feature research sports"
-    "film film contact contact";
+    "film film film film";
   gap: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2rem);
   max-width: var(--max);
   margin: 2.2rem auto 0;
@@ -688,14 +700,13 @@ main { min-width: 0; }
       "feature feature"
       "service music"
       "research sports"
-      "film film"
-      "contact contact";
+      "film film";
   }
 }
 @media (max-width: 560px) {
   .pin-grid {
     grid-template-columns: 1fr;
-    grid-template-areas: "feature" "service" "music" "research" "sports" "film" "contact";
+    grid-template-areas: "feature" "service" "music" "research" "sports" "film";
   }
 }
 
@@ -738,6 +749,18 @@ main { min-width: 0; }
   position: relative;
 }
 .pin-card--feature .pin-card__thumb, .pin-card--wide .pin-card__thumb { aspect-ratio: 16 / 10; }
+/* the feature and wide cards stretch to their grid rows — let the photo take the slack
+   instead of leaving a block of empty paper under the text */
+.pin-card--feature .pin-card__thumb { aspect-ratio: auto; flex: 1; min-height: 260px; }
+.pin-card--wide { flex-direction: row; }
+.pin-card--wide .pin-card__thumb { aspect-ratio: auto; flex: 1 1 58%; min-height: 240px; }
+.pin-card--wide .pin-card__body { flex: 1 1 42%; justify-content: center; padding: 1.6rem 1.8rem; }
+@media (max-width: 860px) {
+  .pin-card--feature .pin-card__thumb { aspect-ratio: 16 / 10; flex: none; min-height: 0; }
+  .pin-card--wide { flex-direction: column; }
+  .pin-card--wide .pin-card__thumb { aspect-ratio: 16 / 10; flex: none; min-height: 0; }
+  .pin-card--wide .pin-card__body { padding: 1.2rem 1.3rem 1.4rem; }
+}
 .pin-card__thumb img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.4s ease;

@@ -7,9 +7,13 @@ interface Props {
   images: ImgSpec[];
 }
 const { id, images } = Astro.props;
+// balanced rows: prefer a column count that divides evenly, so no row is left short
+const count = images.length;
+const fill = (c) => (count % c === 0 ? c : count % c);
+const cols = count <= 4 ? Math.max(count, 1) : (fill(3) > fill(4) ? 3 : 4);
 ---
 <div class="gallery" id={`gallery-${id}`} data-gallery>
-  <div class="gallery__grid">
+  <div class="gallery__grid" style={`--cols:${cols};`}>
     {images.map((img, i) => (
       <button type="button" class="gallery__item" data-item aria-label={`View larger: ${img.alt}`}>
         <span class="gallery__item-frame">
